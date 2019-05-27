@@ -1,0 +1,50 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('SCM') {
+
+            steps {
+                    git "https://github.com/koddas/war-web-project"
+                //
+            }
+        }
+
+        stage('Test') {
+
+            steps {
+                    sh "mvn package"
+                //
+            }
+        }
+
+         stage('code analysis') {
+
+            steps {
+                    sh "/sonar_scanner/bin/sonar-scanner"
+                //
+            }
+        }
+
+
+        stage('Deploy1') {
+
+            steps {
+                   echo "this is step1"
+                //
+            }
+       }
+
+       stage('Deploy2') {
+
+            steps {
+                  echo "this is step1"
+                //
+            }
+
+        }
+
+    }
+}
